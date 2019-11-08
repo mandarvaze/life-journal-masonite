@@ -1,0 +1,37 @@
+{% if auth() %}
+    {% if exists('auth/base') %}
+        {% extends 'auth/base.html' %}
+    {% else %}
+        {% extends 'base.html' %}
+    {% endif %}
+
+    {% block css %}
+    <!-- Application CSS -->
+    <link href="/static/style.css" rel="stylesheet" type="text/css">
+    {% endblock %}
+
+    {% block content %}
+    <div class="container text-center">
+        <div class="title m-b-md">
+            Weekly Journal entries
+        </div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Rating</th>
+                <th scope="col">Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for entry in entries %}
+              <tr>
+                <td>{{ entry.rating }}</td>
+                <td>{{ entry.note }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    {% endblock %}
+{% else %}
+    <a href="/login">Please Login</a>
+{% endif %}
