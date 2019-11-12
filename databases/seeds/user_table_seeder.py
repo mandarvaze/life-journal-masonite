@@ -2,7 +2,7 @@
 
 You can run this seeder in order to generate users.
 
-    - Each time it is ran it will generate 50 random users.
+    - Each time it is ran it will generate 5 random users.
     - All users have the password of 'secret'.
     - You can run the seeder by running: craft seed:run.
 """
@@ -18,4 +18,4 @@ class UserTableSeeder(Seeder):
         """
         Run the database seeds.
         """
-        factory(User, 50).create()
+        factory(User, 5).create()

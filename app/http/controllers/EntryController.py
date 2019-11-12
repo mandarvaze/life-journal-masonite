@@ -1,8 +1,11 @@
 """A EntryController Module."""
+from datetime import datetime
 
 from masonite.controllers import Controller
 from masonite.request import Request
 from masonite.view import View
+
+from app.Entry import Entry
 
 
 class EntryController(Controller):
@@ -17,8 +20,18 @@ class EntryController(Controller):
         self.request = request
 
     def show(self, view: View):
-        entries = [
-            {"rating": 2, "note": "Masonite Sample worked!!"},
-            {"rating": 0, "note": "Just a regular day"},
-        ]
+        entries = Entry.where("author_id", "=", self.request.user().id).get()
         return view.render("entries", {"entries": entries})
+
+    def store(self, request: Request):
+        Entry.create(
+            note=request.input("note"),
+            rating=request.input("rating"),
+            author_id=request.user().id,
+            entry_for_date=datetime.today().strftime("%Y-%m-%d"),
+        )
+        return "post created"
+
+    def create(self, view: View):
+        """Show the input form."""
+        return view.render("entry")

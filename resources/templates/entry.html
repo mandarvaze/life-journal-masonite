@@ -1,0 +1,15 @@
+{% if auth() %}
+    <form action="/entry/create" method="POST">
+        {{ csrf_field }}
+
+        <label> Rating </label>
+        <input type="number" name="rating" min="-2" max="2"><br>
+
+        <label> Note </label>
+        <input type="name" name="note"><br>
+
+        <input type="submit" value="Post!">
+    </form>
+{% else %}
+    <a href="/login">Please Login</a>
+{% endif %}

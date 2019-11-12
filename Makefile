@@ -108,6 +108,8 @@ devdb:
 	@sleep 5
 	@echo "Creating Tables .."
 	@craft migrate
+	@echo "Creating Demo Data .."
+	@craft seed:run
 
 .PHONY: unit
 unit: .installed

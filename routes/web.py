@@ -5,6 +5,8 @@ from masonite.routes import Get, Post
 ROUTES = [
     Get("/", "WelcomeController@show").name("welcome"),
     Get("/entries", "EntryController@show"),
+    Post("/entry/create", "EntryController@store"),
+    Get("/entry", "EntryController@create"),
 ]
 
 ROUTES = ROUTES + [
@@ -13,10 +15,8 @@ ROUTES = ROUTES + [
     Post().route("/login", "LoginController@store"),
     Get().route("/register", "RegisterController@show").name("register"),
     Post().route("/register", "RegisterController@store"),
-
     # Show user their Weekly entries on successful login
     Get().route("/home", "EntryController@show").name("home"),
-
     Get().route("/email/verify", "ConfirmController@verify_show").name("verify"),
     Get().route("/email/verify/send", "ConfirmController@send_verify_email"),
     Get().route("/email/verify/@id:signed", "ConfirmController@confirm_email"),
