@@ -1,3 +1,5 @@
+{% include 'helpers/messages.html' %}
+
 {% if auth() %}
     {% if exists('auth/base') %}
         {% extends 'auth/base.html' %}
@@ -33,6 +35,10 @@
               {% endfor %}
             </tbody>
         </table>
+
+        <a href="/entry" class="btn btn-primary">Add new entry</a>
+
+    </div>
     {% endblock %}
 {% else %}
     <a href="/login">Please Login</a>

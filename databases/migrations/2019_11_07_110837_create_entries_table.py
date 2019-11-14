@@ -10,7 +10,7 @@ class CreateEntriesTable(Migration):
             table.increments("id")
             table.string("note")
             table.integer("rating")
-            table.date("entry_for_date").unique()  # only one entry per day
+            table.date("entry_for_date")
 
             table.integer("author_id").unsigned()
             table.foreign("author_id").references("id").on("users")

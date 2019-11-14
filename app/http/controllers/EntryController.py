@@ -20,7 +20,11 @@ class EntryController(Controller):
         self.request = request
 
     def show(self, view: View):
-        entries = Entry.where("author_id", "=", self.request.user().id).get()
+        entries = (
+            Entry.where("author_id", "=", self.request.user().id)
+            .get()
+            .sort(lambda entry: entry.entry_for_date)
+        )
         return view.render("entries", {"entries": entries})
 
     def store(self, request: Request):
@@ -30,7 +34,9 @@ class EntryController(Controller):
             author_id=request.user().id,
             entry_for_date=datetime.today().strftime("%Y-%m-%d"),
         )
-        return "post created"
+
+        request.session.flash("success", "Entry Added Successfully!")
+        return request.redirect("/home")
 
     def create(self, view: View):
         """Show the input form."""

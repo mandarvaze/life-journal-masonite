@@ -19,10 +19,10 @@ def entries_factory(faker):
     import random
 
     author_ids = [user.id for user in User.select("id").get()]
+
     entry_dates = [
         entry.entry_for_date for entry in Entry.select("entry_for_date").get()
     ]
-
     entry_date = faker.date_between(start_date="-7d", end_date="today")
     while entry_date in entry_dates:
         entry_date = faker.date_between(start_date="-7d", end_date="today")
@@ -31,7 +31,7 @@ def entries_factory(faker):
         "note": faker.sentence(nb_words=6),
         "rating": faker.random_int(min=-2, max=2),
         "entry_for_date": entry_date,
-        "author_id": random.randint(0, len(author_ids)),
+        "author_id": random.randint(1, len(author_ids)),
     }
 
 
