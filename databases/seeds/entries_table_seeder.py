@@ -17,4 +17,4 @@ class EntryTableSeeder(Seeder):
         """
         Run the database seeds.
         """
-        factory(Entry, 5).create()
+        factory(Entry, 25).create()

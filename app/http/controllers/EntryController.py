@@ -1,6 +1,7 @@
 """A EntryController Module."""
 from datetime import datetime
 
+import pendulum
 from masonite.controllers import Controller
 from masonite.request import Request
 from masonite.view import View
@@ -20,10 +21,14 @@ class EntryController(Controller):
         self.request = request
 
     def show(self, view: View):
+        today = pendulum.now()
         entries = (
             Entry.where("author_id", "=", self.request.user().id)
+            .where_between(
+                "entry_for_date", [today.start_of("week"), today.end_of("week")]
+            )
+            .order_by("entry_for_date")
             .get()
-            .sort(lambda entry: entry.entry_for_date)
         )
         return view.render("entries", {"entries": entries})
 
