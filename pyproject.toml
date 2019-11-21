@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "life-journal"
+version = "0.1.0"
+description = "Track Fulfillment in your life using Simple 5 point scale."
+authors = ["Mandar Vaze <mandarvaze@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+masonite = "^2.2"
+masonite-cli = "^2.2"
+psycopg2-binary = "^2.8"
+
+[tool.poetry.dev-dependencies]
+black = "=19.3b0"
+codespell = "^1.16"
+pre-commit = "^1.20"
+pre-commit-hooks = "^2.4"
+coverage = "^4.5"
+flake8 = "^3.7"
+flake8-builtins = "^1.4"
+flake8-comprehensions = "^3.1"
+flake8-debugger = "^3.2"
+flake8-deprecated = "^1.3"
+flake8-docstrings = "^1.5"
+flake8-isort = "^2.7"
+flake8-mock = "^0.3.0"
+flake8-print = "^3.1"
+flake8-self = "^0.2.2"
+flake8-super-call = "^1.0"
+flake8-tuple = "^0.4.0"
+mypy = "^0.740.0"
+pytest = "^5.3"
+pytest-cov = "^2.8"
+pytest-mock = "^1.12"
+pytest-randomly = "^3.1"
+typecov = "^0.2.1"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

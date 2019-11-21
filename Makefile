@@ -1,8 +1,5 @@
 # Convenience makefile to build the dev env and run common commands
 # Based on https://github.com/niteoweb/Makefile
-# .EXPORT_ALL_VARIABLES:
-# PIPENV_VENV_IN_PROJECT = 1
-# PIPENV_IGNORE_VIRTUALENVS = 1
 
 .PHONY: all
 all: .installed
@@ -14,18 +11,12 @@ install:
 
 # TODO: Use pipenv for cleaner solution
 # TODO: Check if VIRTUAL_ENV is set, if yes, then deactivate first
-.installed: requirements.txt requirements-dev.txt
-	@echo "Creating virtualenv .."
-	@python -m venv .venv
-	@echo "Activating virtualenv .."
-	@. .venv/bin/activate
+.installed: poetry.lock
 	@echo "Installing packages .."
-	@pip install -r requirements.txt
-	@echo "Installing dev-packages .."
-	@pip install -r requirements-dev.txt
+	@poetry install
 	@echo "Installing pre-commit hooks .."
-	@pre-commit install -f --hook-type pre-commit
-	@pre-commit install -f --hook-type pre-push
+	@poetry run pre-commit install -f --hook-type pre-commit
+	@poetry run pre-commit install -f --hook-type pre-push
 	@echo "This file is used by 'make' for keeping track of last install time. If Pipfile or Pipfile.lock are newer then this file (.installed) then all 'make *' commands that depend on '.installed' know they need to run pipenv install first." \
 		> .installed
 
@@ -59,12 +50,12 @@ stop-pgsql: .installed
 # Run development server
 .PHONY: run
 run: .installed
-	@craft serve
+	@poetry run craft serve
 
 # Testing and linting targets
 .PHONY: lint
 lint: .installed
-	@pre-commit run --all-files --hook-stage push
+	@poetry run pre-commit run --all-files --hook-stage push
 
 # .PHONY: types
 # types: .installed
@@ -74,9 +65,9 @@ lint: .installed
 # 	@cat ./typecov/linecount.txt
 # 	@pipenv run typecov 100 ./typecov/linecount.txt
 
-# .PHONY: format
-# format: .installed
-# 	@pipenv run black src
+.PHONY: format
+format: .installed
+	@poetry run black .
 
 # anything, in regex-speak
 filter = "."
@@ -114,19 +105,18 @@ devdb:
 .PHONY: unit
 unit: .installed
 ifndef path
-	@python -m pytest . $(coverage_args) $(pytest_args)
+	@poetry run python -m pytest . $(coverage_args) $(pytest_args)
 else
-	@python -m pytest $(path)
+	@poetry run python -m pytest $(path)
 endif
 
 .PHONY: tests
 # tests: format lint types unit
-tests: lint unit
+tests: format lint unit
 
 # TODO: Check if VIRTUAL_ENV is set, if yes, then deactivate first
 .PHONY: clean
 clean:
-	@rm -f ..venv
 	@rm -rf .coverage .mypy_cache htmlcov/ htmltypecov typecov xunit.xml \
 			.git/hooks/pre-commit .git/hooks/pre-push
 	@rm -f .installed

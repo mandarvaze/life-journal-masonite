@@ -22,7 +22,7 @@ Track Fulfillment in your life (https://medium.com/the-book-mechanic/jim-collins
 
 ## TODO
 
-[ ] Fix flake8 errors so that `pre-commit` hooks pass.
-[ ] 100% Test Coverage
-[ ] Configure CI
-[ ] Deploy to Heroku
+- [ ] Fix flake8 errors so that `pre-commit` hooks pass.
+- [ ] 100% Test Coverage
+- [ ] Configure CI
+- [ ] Deploy to Heroku
