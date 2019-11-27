@@ -11,10 +11,6 @@ from masonite.view import View
 class ConfirmController:
     """The ConfirmController class."""
 
-    def __init__(self):
-        """The ConfirmController Constructor."""
-        pass
-
     def verify_show(self, request: Request, view: View, auth: Auth):
         """Show the Verify Email page for unverified users.
 
@@ -25,6 +21,7 @@ class ConfirmController:
 
         Returns:
             [type] -- [description]
+
         """
         return view.render(
             "auth/verify", {"app": request.app().make("Application"), "Auth": auth}
@@ -40,6 +37,7 @@ class ConfirmController:
 
         Returns:
             [type] -- [description]
+
         """
         sign = Sign()
         token = sign.unsign(request.param("id"))

@@ -11,6 +11,7 @@ class VerifyEmailMiddleware:
 
         Arguments:
             request {masonite.request.Request} -- The Masonite request class.
+
         """
         self.request = request
 

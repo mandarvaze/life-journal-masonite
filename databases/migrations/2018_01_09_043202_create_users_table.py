@@ -1,7 +1,10 @@
+"""Migration for Entries Table."""
 from orator.migrations import Migration
 
 
 class CreateUsersTable(Migration):
+    """Migration Class for User Table."""
+
     def up(self):
         """Run the migrations."""
         with self.schema.create("users") as table:

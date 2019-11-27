@@ -1,3 +1,4 @@
+"""Factories that returns dummy data."""
 from orator.orm import Factory
 
 from app.Entry import Entry
@@ -7,6 +8,7 @@ factory = Factory()
 
 
 def users_factory(faker):
+    """Return Fake user."""
     return {
         "name": faker.name(),
         "email": faker.email(),
@@ -15,6 +17,7 @@ def users_factory(faker):
 
 
 def entries_factory(faker):
+    """Return Fake Entry."""
 
     import random
 

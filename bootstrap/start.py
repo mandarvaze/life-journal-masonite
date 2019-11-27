@@ -10,7 +10,7 @@ LoadEnvironment()
 
 
 def app(environ, start_response):
-    """The WSGI Application Server.
+    """Start the WSGI Application Server.
 
     Arguments:
         environ {dict} -- The WSGI environ dictionary
@@ -18,6 +18,7 @@ def app(environ, start_response):
 
     Returns:
         WSGI Response
+
     """
     from wsgi import container
 

@@ -13,8 +13,8 @@ from config.factories import factory
 
 
 class EntryTableSeeder(Seeder):
+    """Seeder for Entry Table."""
+
     def run(self):
-        """
-        Run the database seeds.
-        """
+        """Run the database seeds."""
         factory(Entry, 25).create()

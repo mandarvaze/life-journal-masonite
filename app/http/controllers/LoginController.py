@@ -8,10 +8,6 @@ from masonite.view import View
 class LoginController:
     """Login Form Controller."""
 
-    def __init__(self):
-        """LoginController Constructor."""
-        pass
-
     def show(self, request: Request, view: View, auth: Auth):
         """Show the login page.
 
@@ -22,6 +18,7 @@ class LoginController:
 
         Returns:
             masonite.view.View -- Returns the Masonite view class.
+
         """
         if request.user():
             return request.redirect("/home")
@@ -38,6 +35,7 @@ class LoginController:
 
         Returns:
             masonite.request.Request -- The Masonite request class.
+
         """
         if auth.login(request.input("email"), request.input("password")):
             return request.redirect("/home")
@@ -53,6 +51,7 @@ class LoginController:
 
         Returns:
             masonite.request.Request -- The Masonite request class.
+
         """
         auth.logout()
         return request.redirect("/login")

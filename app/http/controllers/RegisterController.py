@@ -6,15 +6,10 @@ from masonite.request import Request
 from masonite.view import View
 
 from config import application
-from config import auth as auth_config
 
 
 class RegisterController:
     """The RegisterController class."""
-
-    def __init__(self):
-        """The RegisterController Constructor."""
-        pass
 
     def show(self, request: Request, view: View, auth: Auth):
         """Show the registration page.
@@ -24,6 +19,7 @@ class RegisterController:
 
         Returns:
             masonite.view.View -- The Masonite View class.
+
         """
         return view.render("auth/register", {"app": application, "Auth": auth})
 
@@ -35,6 +31,7 @@ class RegisterController:
 
         Returns:
             masonite.request.Request -- The Masonite request class.
+
         """
         user = auth.register(
             {
@@ -49,7 +46,7 @@ class RegisterController:
 
         # Login the user
         if auth.login(request.input("email"), request.input("password")):
-            # Redirect to the homepage
+            # Login successful, Redirect to the homepage
             return request.redirect("/home")
 
         # Login failed. Redirect to the register page.

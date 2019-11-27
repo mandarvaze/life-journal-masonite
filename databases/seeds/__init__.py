@@ -1,3 +1,4 @@
+"""Database Seeds."""
 import os
 import sys
 

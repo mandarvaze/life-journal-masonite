@@ -290,14 +290,6 @@ testfixtures = "*"
 
 [[package]]
 category = "dev"
-description = "Provides checking for non-existent mock methods"
-name = "flake8-mock"
-optional = false
-python-versions = "*"
-version = "0.3"
-
-[[package]]
-category = "dev"
 description = "print statement checker plugin for flake8"
 name = "flake8-print"
 optional = false
@@ -1007,7 +999,7 @@ python-versions = "*"
 version = "1.11.2"
 
 [metadata]
-content-hash = "dad2fce3008717944529d7638e9b506d8da3b0d61c6e0d2c16b04f2bab61666d"
+content-hash = "515e2041b6b0a574a8f430a5581c1a0e08342bbc89adae325bbf8e52c3d01c56"
 python-versions = "^3.8"
 
 [metadata.hashes]
@@ -1039,7 +1031,6 @@ flake8-debugger = ["712d7c1ff69ddf3f0130e94cc88c2519e720760bce45e8c330bfdcb61ab4
 flake8-deprecated = ["211951854837ced9ec997a75c6e5b957f3536a735538ee0620b76539fd3706cd", "9fa5a0c5c81fb3b34c53a0e4f16cd3f0a3395078cfd4988011cbab5fb0afa7f7"]
 flake8-docstrings = ["3d5a31c7ec6b7367ea6506a87ec293b94a0a46c0bce2bb4975b7f1d09b6f3717", "a256ba91bc52307bef1de59e2a009c3cf61c3d0952dbe035d6ff7208940c2edc"]
 flake8-isort = ["1e67b6b90a9b980ac3ff73782087752d406ce0a729ed928b92797f9fa188917e", "81a8495eefed3f2f63f26cd2d766c7b1191e923a15b9106e6233724056572c68"]
-flake8-mock = ["2fa775e7589f4e1ad74f35d60953eb20937f5d7355235e54bf852c6837f2bede"]
 flake8-print = ["324f9e59a522518daa2461bacd7f82da3c34eb26a4314c2a54bd493f8b394a68"]
 flake8-self = ["9268faf434c7a132beec28574d9e9258f2040a886530aff31e5c8a2436904df2"]
 flake8-super-call = ["0486ebfb24e3bf104b1c1d7f823a51ebcefb3a26108b25cb3129a9e8a57ef145", "61cfcd0c8ad78e1cf1f4d1225cb7513666ab9c5a9900a238b2c4abee8ad9a7de"]

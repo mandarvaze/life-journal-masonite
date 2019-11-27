@@ -1,11 +1,12 @@
+"""Migration for Entries Table."""
 from orator.migrations import Migration
 
 
 class CreateEntriesTable(Migration):
+    """Migration Class for Entries Table."""
+
     def up(self):
-        """
-        Run the migrations.
-        """
+        """Run the migrations."""
         with self.schema.create("entries") as table:
             table.increments("id")
             table.string("note")
@@ -18,7 +19,5 @@ class CreateEntriesTable(Migration):
             table.timestamps()
 
     def down(self):
-        """
-        Revert the migrations.
-        """
+        """Revert the migrations."""
         self.schema.drop("entries")

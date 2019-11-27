@@ -13,10 +13,11 @@ class EntryController(Controller):
     """EntryController Controller Class."""
 
     def __init__(self, request: Request):
-        """EntryController Initializer
+        """Entry Controller Initializer.
 
         Arguments:
             request {masonite.request.Request} -- The Masonite Request class.
+
         """
         self.request = request
 
